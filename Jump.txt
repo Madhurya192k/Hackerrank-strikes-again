@@ -1,0 +1,38 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int canJump(int nums[], int size) {
+        int current_furtherest = 0;                             // index 0 reachable
+        
+        for(int i = 0; i < size; i++){
+            if(i > current_furtherest) return 2;            // not reachable
+            int possible_new_furtherest = i + nums[i];
+            if( possible_new_furtherest > current_furtherest) {
+                current_furtherest = possible_new_furtherest;
+            }
+        }
+        return 1;                                            //only true if last one is reachable
+    }
+
+int main() {
+    int n=0;
+    int a;
+    int arr[110];
+    while(cin>>a){
+        arr[n]=a;
+        n++;
+    }
+    int res = canJump(arr, n+1);
+    cout<<res;
+    // vector<int> nums;
+    // while(cin>>a){
+    //     nums.push_back(a);
+    //     n++;
+    // }
+    
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
