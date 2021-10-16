@@ -1,0 +1,46 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int maxWater(vector<int> v, int n)
+{
+
+    int res = 0;
+
+    for (int i = 1; i < n-1; i++) {
+         
+
+        int left = v[i];
+        for (int j=0; j<i; j++)
+           left = max(left, v[j]);
+         
+
+        int right = v[i];
+        for (int j=i+1; j<n; j++)
+           right = max(right, v[j]);
+        
+
+       res = res + (min(left, right) - v[i]);  
+    }
+ 
+    return res;
+}
+ 
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    vector<int> v;
+    int a;
+    while(cin>>a){
+        v.push_back(a);
+    }
+    
+    int r = maxWater(v, v.size());
+    cout<<r;
+    return 0;
+}
